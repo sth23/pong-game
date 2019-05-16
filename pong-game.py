@@ -31,7 +31,7 @@ class Ball(Sprite):
     def __init__(self, position):
         super().__init__(Ball.circ, position)
         self.fxcenter = self.fycenter = 0.5
-        self.speed = 5
+        self.speed = 10
         self.vx = self.speed
         self.vy = 0
         self.paddledistance = 0
