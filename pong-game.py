@@ -97,8 +97,8 @@ class PongGame(App):
     def step(self):
         if self.ball.y < 16 or self.ball.y > self.height - 16:
             self.ball.wallBounce()
-        if self.ball.collidingWithSprites(Paddle):
-            self.ball.paddleBounce()
+        for paddle in self.ball.collidingWithSprites(Paddle):
+            self.ball.paddleBounce(paddle.y)
         self.player1.step()
         self.player2.step()
         self.ball.step()
