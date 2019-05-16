@@ -43,8 +43,26 @@ class Paddle(Sprite):
     rect = RectangleAsset(20, 80, noline, black)
     def __init__(self, position):
         super().__init__(Paddle.rect, position)
+        self.speed = 4
         self.vy = 0
         self.fxcenter = self.fycenter = 0.5
+        
+        PongGame.listenKeyEvent("keydown", "up arrow", self.goUpOn)
+        PongGame.listenKeyEvent("keyup", "up arrow", self.goUpOff)
+        PongGame.listenKeyEvent("keydown", "down arrow", self.goDownOn)
+        PongGame.listenKeyEvent("keyup", "down arrow", self.goDownOff)
+        
+    def goUpOn(self, event):
+        self.vy = -self.speed
+        
+    def goUpOff(self, event):
+        self.vy = 0
+        
+    def goDownOn(self, event):
+        self.vy = self.speed
+        
+    def goDownOff(self, event):
+        self.vy = 0
         
     def step(self):
         self.y += self.vy
