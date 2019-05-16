@@ -52,11 +52,12 @@ class Ball(Sprite):
         
 class Paddle(Sprite):
     rect = RectangleAsset(20, 100, noline, black)
-    def __init__(self, position):
+    def __init__(self, position, maxheight):
         super().__init__(Paddle.rect, position)
         self.speed = 5
         self.vy = 0
         self.fxcenter = self.fycenter = 0.5
+        self.maxheight = maxheight
         
         PongGame.listenKeyEvent("keydown", "up arrow", self.goUpOn)
         PongGame.listenKeyEvent("keyup", "up arrow", self.goUpOff)
@@ -76,7 +77,10 @@ class Paddle(Sprite):
         self.vy = 0
         
     def step(self):
-        self.y += self.vy
+        if self.vy < 0 and self.y + 60 > 0:
+            self.y += self.vy
+        elif self.vy > 0 and self.y + 60 < self.maxheight:
+            self.y += self.vy
         
 class PongGame(App):
     def __init__(self):
@@ -89,8 +93,8 @@ class PongGame(App):
         self.bottomwall = Wall(self.rect, (0, self.height - self.wallthickness))
         
         # Create Paddles
-        self.player1 = Paddle((self.width - 40, self.height / 2))
-        self.player2 = Paddle((40, self.height / 2))
+        self.player1 = Paddle((self.width - 40, self.height / 2), self.height)
+        self.player2 = Paddle((40, self.height / 2), self.height)
         
         self.ball = Ball((self.width / 2, self.height / 2))
         
@@ -99,10 +103,6 @@ class PongGame(App):
             self.ball.wallBounce()
         for paddle in self.ball.collidingWithSprites(Paddle):
             self.ball.paddleBounce(paddle.y)
-        if self.player1.y < 60 or self.player1.y > self.height - 60:
-            self.player1.vy = 0
-        if self.player2.y < 60 or self.player2.y > self.height - 60:
-            self.player2.vy = 0
         self.player1.step()
         self.player2.step()
         self.ball.step()
