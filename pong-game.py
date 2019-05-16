@@ -54,7 +54,7 @@ class Paddle(Sprite):
     rect = RectangleAsset(20, 100, noline, black)
     def __init__(self, position, maxheight):
         super().__init__(Paddle.rect, position)
-        self.speed = 8
+        self.speed = 10
         self.vy = 0
         self.fxcenter = self.fycenter = 0.5
         self.maxheight = maxheight
