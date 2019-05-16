@@ -54,7 +54,7 @@ class PongGame(App):
         super().__init__()
         
         # Create top & bottom wall
-        self.wallthickness
+        self.wallthickness = 10
         self.rect = RectangleAsset(self.width, self.wallthickness, noline, black)
         self.topwall = Wall(self.rect, (0, 0))
         self.bottomwall = Wall(self.rect, (0, self.height - self.wallthickness), noline, black)
