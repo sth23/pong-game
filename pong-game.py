@@ -40,7 +40,7 @@ class Ball(Sprite):
         self.y += self.vy
         
 class Paddle(Sprite):
-    rect = RectangleAsset(20, 80, noline, black)
+    rect = RectangleAsset(20, 100, noline, black)
     def __init__(self, position):
         super().__init__(Paddle.rect, position)
         self.speed = 5
