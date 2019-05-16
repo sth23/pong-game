@@ -57,7 +57,7 @@ class PongGame(App):
         self.wallthickness = 10
         self.rect = RectangleAsset(self.width, self.wallthickness, noline, black)
         self.topwall = Wall(self.rect, (0, 0))
-        self.bottomwall = Wall(self.rect, (0, self.height - self.wallthickness), noline, black)
+        self.bottomwall = Wall(self.rect, (0, self.height - self.wallthickness))
         
         # Create Paddles
         self.player1 = Paddle((self.width - 40, self.height / 2))
