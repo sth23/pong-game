@@ -77,7 +77,7 @@ class Paddle(Sprite):
         self.vy = 0
         
     def step(self):
-        if self.vy < 0 and self.y + 60 > 0:
+        if self.vy < 0 and self.y - 60 > 0:
             self.y += self.vy
         elif self.vy > 0 and self.y + 60 < self.maxheight:
             self.y += self.vy
