@@ -1,4 +1,4 @@
-    """
+"""
 Final Project: Pong Game
 Author: Sean
 Credit: Tutorials
