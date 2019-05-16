@@ -65,7 +65,7 @@ class PongGame(App):
         
         self.ball = Ball((self.width / 2, self.height / 2))
         
-    def step(self)
+    def step(self):
         self.player1.step()
         self.player2.step()
         self.ball.step()
