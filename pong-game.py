@@ -35,6 +35,12 @@ class Ball(Sprite):
         self.vx = self.speed
         self.vy = 0
         
+    def wallBounce(self):
+        self.vy = -self.vy
+        
+    def paddleBounce(self):
+        self.vx = -self.vx
+        
     def step(self):
         self.x += self.vx
         self.y += self.vy
