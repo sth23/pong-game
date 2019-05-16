@@ -31,7 +31,7 @@ class Ball(Sprite):
     def __init__(self, position):
         super().__init__(Ball.circ, position)
         self.fxcenter = self.fycenter = 0.5
-        self.speed = 10
+        self.speed = 8
         self.vx = self.speed
         self.vy = 0
         self.paddledistance = 0
@@ -54,7 +54,7 @@ class Paddle(Sprite):
     rect = RectangleAsset(20, 100, noline, black)
     def __init__(self, position, maxheight):
         super().__init__(Paddle.rect, position)
-        self.speed = 10
+        self.speed = 8
         self.vy = 0
         self.fxcenter = self.fycenter = 0.5
         self.maxheight = maxheight
