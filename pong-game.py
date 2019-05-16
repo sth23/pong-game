@@ -32,8 +32,8 @@ class Ball(Sprite):
         super().__init__(Ball.circ, position)
         self.fxcenter = self.fycenter = 0.5
         self.speed = 2
-        self.vx = 0
-        self.vy = self.speed
+        self.vx = self.speed
+        self.vy = 0
         
     def wallBounce(self):
         self.vy = -self.vy
@@ -92,6 +92,8 @@ class PongGame(App):
     def step(self):
         if self.ball.y < 16 or self.ball.y > self.height - 16:
             self.ball.wallBounce()
+        if self.ball.collidingWithSprites(Paddle):
+            self.ball.paddleBounce()
         self.player1.step()
         self.player2.step()
         self.ball.step()
