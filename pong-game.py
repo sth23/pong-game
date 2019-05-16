@@ -69,3 +69,6 @@ class PongGame(App):
         self.player1.step()
         self.player2.step()
         self.ball.step()
+        
+myapp = PongGame()
+myapp.run()
