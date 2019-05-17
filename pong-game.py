@@ -31,7 +31,7 @@ class Ball(Sprite):
     def __init__(self, position):
         super().__init__(Ball.circ, position)
         self.fxcenter = self.fycenter = 0.5
-        self.speed = 9
+        self.speed = 8
         self.vx = self.speed
         self.vy = 0
         self.paddledistance = 0
@@ -42,8 +42,8 @@ class Ball(Sprite):
         
     def paddleBounce(self, paddley):
         self.paddledistance = self.y - paddley
-        self.vy = self.speed * math.sin((self.paddledistance * math.pi / 50))
-        self.vx = self.bump * self.speed * math.cos((self.paddledistance * math.pi / 50))
+        self.vy = self.speed * math.sin((self.paddledistance * math.pi / 120))
+        self.vx = self.bump * self.speed * math.cos((self.paddledistance * math.pi / 129))
         self.bump = -self.bump
         
     def step(self):
@@ -54,7 +54,7 @@ class Paddle(Sprite):
     rect = RectangleAsset(20, 100, noline, black)
     def __init__(self, position, maxheight):
         super().__init__(Paddle.rect, position)
-        self.speed = 8
+        self.speed = 6
         self.vy = 0
         self.fxcenter = self.fycenter = 0.5
         self.maxheight = maxheight
