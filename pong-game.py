@@ -41,9 +41,9 @@ class Ball(Sprite):
         self.vy = -self.vy
         
     def paddleBounce(self, paddley):
-        self.paddledistance = self.y - paddley + 20
-        self.vy = self.speed * math.sin((self.paddledistance * math.pi / 120))
-        self.vx = self.bump * self.speed * math.cos((self.paddledistance * math.pi / 120))
+        self.paddledistance = self.y - paddley
+        self.vy = self.speed * math.sin((self.paddledistance * math.pi / 100))
+        self.vx = self.bump * self.speed * math.cos((self.paddledistance * math.pi / 100))
         self.bump = -self.bump
         
     def step(self):
